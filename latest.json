@@ -1,0 +1,14 @@
+{
+  "version": "2.0.1",
+  "released_at": "2026-08-10",
+  "features": [],
+  "actions": [],
+  "fixes": [
+    "Single sign-on now works when the identity provider is configured from the Authentication screen. It could not: sign-in failed after the password had already been typed, because the platform advertised the wrong token-signing algorithm to the provider. Only deployments that set the provider up in `.env` were unaffected.",
+    "Signing out of the identity provider as well as the platform now works on those same deployments — the switch existed and could not fire.",
+    "**Site address** now appears under Administration. The screen that sets the platform's own address, and whether HTTPS sits in front of it, previously could only be reached by typing its URL.",
+    "Pasting a full web address into the Site address field no longer takes the platform offline. It is reduced to the hostname, and the screen now says plainly that this is the address you are connected through.",
+    "The warning about a redirect address that cannot be registered now leads with the usual cause — HTTPS is in front but the platform has not been told — instead of advising you to move to localhost."
+  ],
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.0.1"
+}
