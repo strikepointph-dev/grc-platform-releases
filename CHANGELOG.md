@@ -20,6 +20,46 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.1.0 — 2026-08-13
+
+### Upgrade note
+- **This release includes a web-server change that you must deploy for one of
+  the security fixes to take effect.** Uploaded files are now access-controlled
+  by the application, which only works once the new `deploy/nginx.conf` is in
+  place and nginx has been reloaded. `docker compose pull && up -d` updates the
+  application but **not** this file — deploy the updated `nginx.conf` and run
+  `docker compose exec nginx nginx -s reload` as part of this upgrade.
+  (`update.sh` and the release kit ship the file for you.) Until nginx is
+  reloaded, uploaded files stay downloadable without signing in.
+- Includes a database migration; it runs automatically on container start.
+
+### Bugs & fixes
+- **Uploaded files can no longer be downloaded without signing in.** Incident
+  (NICAR) evidence, policy attachments and internal documents were being served
+  straight off the web server, so anyone who had — or guessed — a file's link
+  could retrieve it without an account. Downloading now requires an
+  authenticated session. (Uploading always required signing in; this was a
+  read-access gap, not an upload one.)
+- **Every page now sends a Content-Security-Policy.** This limits what injected
+  code could do in a visitor's browser — in particular it blocks a script from
+  loading attacker code or sending data to another site. The sign-in page is
+  covered too.
+- **The global footer note is now sanitised.** Only safe text formatting and
+  links are rendered; scripts and other active content placed in that field are
+  stripped, so it can no longer be used to run code on the sign-in page.
+- **Exported CSV reports can no longer smuggle a spreadsheet formula.** A cell
+  beginning with `=`, `+`, `-` or `@` is now kept as text, closing a way a
+  crafted entry could run when the export is opened in Excel or Google Sheets.
+- **The backup restore checks extracted file paths more strictly**, hardening it
+  against a maliciously crafted archive.
+
+### New features
+- **Optional stricter Content-Security-Policy for administrators who want it.**
+  A nonce-based, no-`unsafe-inline` script policy now ships in report-only mode
+  (it observes without blocking). Once you have confirmed the browser console is
+  clean across the admin, set `DJANGO_CSP_ENFORCE_STRICT_SCRIPTS=True` to
+  enforce it. Left off, the platform keeps its existing, working policy.
+
 ## 2.0.2 — 2026-08-11
 
 ### Upgrade note

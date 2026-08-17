@@ -1,23 +1,19 @@
 {
-  "version": "2.0.2",
-  "released_at": "2026-08-11",
+  "version": "2.1.0",
+  "released_at": "2026-08-13",
   "features": [
-    "**Restoring no longer depends on the platform being able to start.** A restore can now be run from the command line, which is what you need when a failed update leaves the application restart-looping and the Restore page unreachable. See `docs/DISASTER-RECOVERY.md`.",
-    "**`update.sh` applies a release in one command.** It backs up first and stops if the backup fails, pins the version, restarts, then asks the running application which version it is \u2014 and puts the previous one back by itself if the new one does not answer. No more editing the compose file by hand.",
-    "**A guided installer for Amazon Web Services**, plus a step-by-step hosting guide written for someone who is not a cloud engineer.",
-    "**Approval, review and alert emails have been rebuilt.** They now match the incident notices rather than arriving as plain text, and they carry a working link back to the item that needs attention.",
-    "**The email delivery test now reports how the message reached you** \u2014 the mail server, the sender address and which deployment sent it \u2014 so the person reading it in an inbox can tell whether the configuration is right."
+    "**Optional stricter Content-Security-Policy for administrators who want it.** A nonce-based, no-`unsafe-inline` script policy now ships in report-only mode (it observes without blocking). Once you have confirmed the browser console is clean across the admin, set `DJANGO_CSP_ENFORCE_STRICT_SCRIPTS=True` to enforce it. Left off, the platform keeps its existing, working policy."
   ],
   "actions": [
-    "The licence has changed. From this release the platform is proprietary software licensed for evaluation, not AGPL-3.0. Version 2.0.1 and earlier remain under the terms they were issued with. Read `LICENSE` in the release kit before deploying this version."
+    "**This release includes a web-server change that you must deploy for one of the security fixes to take effect.** Uploaded files are now access-controlled by the application, which only works once the new `deploy/nginx.conf` is in place and nginx has been reloaded. `docker compose pull && up -d` updates the application but **not** this file \u2014 deploy the updated `nginx.conf` and run `docker compose exec nginx nginx -s reload` as part of this upgrade. (`update.sh` and the release kit ship the file for you.) Until nginx is reloaded, uploaded files stay downloadable without signing in.",
+    "Includes a database migration; it runs automatically on container start."
   ],
   "fixes": [
-    "The change history on an incident now names the people involved. Handing a ticket to a new owner recorded the change as two internal identifiers, which no one could read and which made the trail useless as evidence.",
-    "Status and priority changes in that history now read as words rather than stored codes.",
-    "Emails now carry your own product name. Every notice used the built-in name regardless of what the platform had been renamed to.",
-    "The plain-text version of an email no longer shows stray `&lt;` characters around addresses.",
-    "A restore now refuses an archive taken on a newer version than the one running, instead of leaving a database the software cannot read.",
-    "`backup_system --once` works. Every instruction we have published used that wording and it was rejected as an unrecognised option, which meant the backup step of the documented upgrade failed."
+    "**Uploaded files can no longer be downloaded without signing in.** Incident (NICAR) evidence, policy attachments and internal documents were being served straight off the web server, so anyone who had \u2014 or guessed \u2014 a file's link could retrieve it without an account. Downloading now requires an authenticated session. (Uploading always required signing in; this was a read-access gap, not an upload one.)",
+    "**Every page now sends a Content-Security-Policy.** This limits what injected code could do in a visitor's browser \u2014 in particular it blocks a script from loading attacker code or sending data to another site. The sign-in page is covered too.",
+    "**The global footer note is now sanitised.** Only safe text formatting and links are rendered; scripts and other active content placed in that field are stripped, so it can no longer be used to run code on the sign-in page.",
+    "**Exported CSV reports can no longer smuggle a spreadsheet formula.** A cell beginning with `=`, `+`, `-` or `@` is now kept as text, closing a way a crafted entry could run when the export is opened in Excel or Google Sheets.",
+    "**The backup restore checks extracted file paths more strictly**, hardening it against a maliciously crafted archive."
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.0.2"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.1.0"
 }
