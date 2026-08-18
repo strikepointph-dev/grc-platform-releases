@@ -20,6 +20,28 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.2.0 — 2026-08-18
+
+### New features
+- **A NICAR that misses its update target now tells its owner.** The queue has
+  always shown when a ticket was past its SLA, but nothing acted on it — a P1
+  could sit overdue indefinitely and the only way to find out was to go and
+  look. The owning analyst is now notified when a ticket breaches, and
+  reminded again at the ticket's own SLA interval: hourly for a P1, every five
+  days for a P4, so the reminder is as loud as the priority somebody assigned.
+- **Working the ticket stops the reminders.** Adding a note or updating the
+  ticket restarts the clock and ends the alerts — the way to stop the nagging
+  is to do the work. If it falls behind again, the reminders resume.
+- **The first breach is emailed; the repeats stay in the app.** An hourly
+  email loop on a P1 is how a mail server gets treated as a spam source, which
+  would cost you the incident notices that actually have to leave the building.
+- **The dashboard has a "NICARs past SLA" tile**, naming the worst offender,
+  and it links straight into the queue filtered to breached tickets.
+- **The NICAR queue can be filtered by SLA state** — breached, due soon, on
+  track — from the filter bar.
+
+---
+
 ## 2.1.1 — 2026-08-17
 
 ### Bugs & fixes
