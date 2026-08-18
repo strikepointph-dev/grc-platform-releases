@@ -20,6 +20,39 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.3.0 — 2026-08-18
+
+### New features
+- **Reports & exports is now a proper reporting module.** It used to offer three
+  fixed downloads. You can now export **ten** datasets — governance documents,
+  the risk register, controls, control mappings, framework coverage, review
+  cycles, incidents, incident notices, repository documents and user accounts —
+  and choose exactly what goes in the file.
+- **Build a report and save it.** Pick the columns you want, filter by status,
+  owner, priority, framework or a date range, choose the sort order, and save
+  the whole thing as a named report. Running it again is one click, and it
+  always reflects today's data rather than a stale snapshot.
+- **Excel output.** Reports download as a formatted `.xlsx` — frozen header row,
+  filter dropdowns, sensible column widths, and dates and numbers as real cells
+  rather than text — or as CSV if you prefer. Both are safe to open: a cell can
+  never be treated as a formula.
+- **Reports can be emailed on a schedule.** Set a report to go out daily, weekly
+  or monthly and it arrives in the recipients' inboxes with the file attached.
+  Useful for a monthly risk pack or a quarterly access review nobody has to
+  remember to prepare.
+- **Reports can be shared.** A shared report is visible to colleagues, but it is
+  always run against the reader's own access — so sharing a report can never
+  show somebody data their role does not allow, and neither can emailing it.
+- **Report history** records what was produced, by whom, when, and who a
+  scheduled copy went to. The files themselves are not stored; re-running a
+  report reproduces it.
+
+### Bugs & fixes
+- The three original export links keep working and now go through the same
+  export path, so they benefit from the spreadsheet-safety handling too.
+
+---
+
 ## 2.2.1 — 2026-08-18
 
 ### Upgrade note
