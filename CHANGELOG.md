@@ -20,6 +20,19 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.3.1 — 2026-08-19
+
+### Bugs & fixes
+- **Updating from version 2.0.1 or earlier no longer fails at the backup step.**
+  `update.sh` takes its safety backup using the version that is still running,
+  and the `--once` option it passes did not exist before 2.0.2 — so anyone
+  upgrading from an older release was stopped by "unrecognized arguments:
+  --once" at the exact moment they were doing the right thing. The updater now
+  falls back to the older command automatically. The backup taken is identical;
+  only the way it is asked for changes.
+
+---
+
 ## 2.3.0 — 2026-08-18
 
 ### New features
