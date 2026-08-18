@@ -20,6 +20,26 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.2.1 — 2026-08-18
+
+### Upgrade note
+- **If you are running 2.1.0, 2.1.1 or 2.2.0, update to this release.** Those
+  versions carry a security policy that stops the admin interface's JavaScript
+  from running: the theme switcher, tabs, dialogs and the sidebar all stop
+  responding, and the keyboard-shortcuts panel appears stuck open over the
+  page. Nothing is lost or exposed — the interface is simply unusable until
+  this release. Going straight from 2.0.x to 2.2.1 avoids it entirely.
+
+### Bugs & fixes
+- **The admin interface works again under the new security policy.** The
+  Content-Security-Policy added in 2.1.0 blocked the way the admin theme
+  evaluates its own interface code, so every interactive element failed
+  silently in the browser. The policy now permits it. Protection against
+  loading outside code and against sending your data to another site is
+  unchanged.
+
+---
+
 ## 2.2.0 — 2026-08-18
 
 ### New features

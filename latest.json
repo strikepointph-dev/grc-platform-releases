@@ -1,14 +1,12 @@
 {
-  "version": "2.2.0",
+  "version": "2.2.1",
   "released_at": "2026-08-18",
-  "features": [
-    "**A NICAR that misses its update target now tells its owner.** The queue has always shown when a ticket was past its SLA, but nothing acted on it \u2014 a P1 could sit overdue indefinitely and the only way to find out was to go and look. The owning analyst is now notified when a ticket breaches, and reminded again at the ticket's own SLA interval: hourly for a P1, every five days for a P4, so the reminder is as loud as the priority somebody assigned.",
-    "**Working the ticket stops the reminders.** Adding a note or updating the ticket restarts the clock and ends the alerts \u2014 the way to stop the nagging is to do the work. If it falls behind again, the reminders resume.",
-    "**The first breach is emailed; the repeats stay in the app.** An hourly email loop on a P1 is how a mail server gets treated as a spam source, which would cost you the incident notices that actually have to leave the building.",
-    "**The dashboard has a \"NICARs past SLA\" tile**, naming the worst offender, and it links straight into the queue filtered to breached tickets.",
-    "**The NICAR queue can be filtered by SLA state** \u2014 breached, due soon, on track \u2014 from the filter bar. ---"
+  "features": [],
+  "actions": [
+    "**If you are running 2.1.0, 2.1.1 or 2.2.0, update to this release.** Those versions carry a security policy that stops the admin interface's JavaScript from running: the theme switcher, tabs, dialogs and the sidebar all stop responding, and the keyboard-shortcuts panel appears stuck open over the page. Nothing is lost or exposed \u2014 the interface is simply unusable until this release. Going straight from 2.0.x to 2.2.1 avoids it entirely."
   ],
-  "actions": [],
-  "fixes": [],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.2.0"
+  "fixes": [
+    "**The admin interface works again under the new security policy.** The Content-Security-Policy added in 2.1.0 blocked the way the admin theme evaluates its own interface code, so every interactive element failed silently in the browser. The policy now permits it. Protection against loading outside code and against sending your data to another site is unchanged. ---"
+  ],
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.2.1"
 }
