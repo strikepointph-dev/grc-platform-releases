@@ -20,6 +20,18 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.3.2 — 2026-08-19
+
+### Bugs & fixes
+- **The Reports link now appears for everyone who can use it.** The sidebar
+  only showed it to people who could see policies, risks or controls — the
+  right list when reporting covered exactly those three. Now that reports cover
+  ten datasets, somebody whose access is the incident queue or the document
+  repository could use reporting but had no link to reach it. The menu now
+  follows whatever data the person can actually read.
+
+---
+
 ## 2.3.1 — 2026-08-19
 
 ### Bugs & fixes

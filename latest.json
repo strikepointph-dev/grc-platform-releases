@@ -1,10 +1,10 @@
 {
-  "version": "2.3.1",
+  "version": "2.3.2",
   "released_at": "2026-08-19",
   "features": [],
   "actions": [],
   "fixes": [
-    "**Updating from version 2.0.1 or earlier no longer fails at the backup step.** `update.sh` takes its safety backup using the version that is still running, and the `--once` option it passes did not exist before 2.0.2 \u2014 so anyone upgrading from an older release was stopped by \"unrecognized arguments: --once\" at the exact moment they were doing the right thing. The updater now falls back to the older command automatically. The backup taken is identical; only the way it is asked for changes. ---"
+    "**The Reports link now appears for everyone who can use it.** The sidebar only showed it to people who could see policies, risks or controls \u2014 the right list when reporting covered exactly those three. Now that reports cover ten datasets, somebody whose access is the incident queue or the document repository could use reporting but had no link to reach it. The menu now follows whatever data the person can actually read. ---"
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.3.1"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.3.2"
 }
