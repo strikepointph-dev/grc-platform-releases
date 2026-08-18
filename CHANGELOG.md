@@ -20,6 +20,20 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.1.1 — 2026-08-17
+
+### Bugs & fixes
+- **The "up to date" badge no longer trusts a stale check.** If the daily
+  update check stops running — its background container is down, or the host
+  has lost outbound internet after one earlier success — the footer used to go
+  on showing "(Latest)" indefinitely: a reassuring answer that was no longer
+  being confirmed. It now drops the "(Latest)" claim once the last check is
+  older than three days, so a stalled checker is visible instead of silent. A
+  release that is already known to be available is still flagged regardless of
+  the check's age.
+
+---
+
 ## 2.1.0 — 2026-08-13
 
 ### Upgrade note
