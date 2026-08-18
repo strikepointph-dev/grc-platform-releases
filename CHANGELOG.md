@@ -20,6 +20,34 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.5.0 — 2026-08-19
+
+### New features
+- **Report on the document type you actually want.** Instead of one
+  "Governance documents" option, the list now offers **Policies, Procedures,
+  Standards, Work instructions** and **Guidelines** separately — plus an "All
+  governance documents" option when you do want them together. Each respects
+  its own access: somebody who can read procedures but not policies is only
+  offered procedures.
+- **Filter by status, and by whatever else fits the data.** Choosing a dataset
+  now offers the filters that belong to it — Draft / For approval / Published
+  for a document, Draft / Open / Resolved and the priority for an incident,
+  Active / Inactive and the role for a user account. The controls change with
+  the dataset, without the page reloading.
+- **The report form is tighter.** Controls are sized to their content rather
+  than stretched across the screen, and the time range is a Relative /
+  Absolute / All time switch that shows only the fields for the mode you
+  picked — instead of both at once.
+- **Download is one menu** with Excel, CSV and PDF, rather than three buttons.
+
+### Bugs & fixes
+- **The owner filter is usable immediately.** It stayed greyed out until a
+  report had been generated, because the list of people was only fetched once
+  the dataset had been submitted. It now enables the moment you choose a
+  dataset — and says so plainly when a dataset has no owner to filter by.
+
+---
+
 ## 2.4.0 — 2026-08-19
 
 ### Bugs & fixes
