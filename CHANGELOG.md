@@ -20,6 +20,37 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.4.0 — 2026-08-19
+
+### Bugs & fixes
+- **The Reports pages showed developer notes as text and did not work.** Blocks
+  of explanatory comment appeared on screen and the dataset chooser was left
+  unusable. Fixed, along with four other pages carrying the same fault in
+  rarely-seen states (a suspended account's dashboard, the purge confirmation,
+  the backup list and the approval forms).
+- **A new incident can no longer be created into a broken state.** Changing the
+  status away from Draft while creating a ticket produced "This NICAR has
+  already been issued" and left a ticket in the queue with no number, which
+  could then be neither issued nor deleted. Status is now fixed to Draft until
+  the ticket is issued — issuing is what allocates the number and sends the
+  notice — and becomes editable straight afterwards. The same protection covers
+  editing a draft, which could produce the identical broken ticket.
+
+### New features
+- **Reports & exports is now a single "Generate a report" screen.** Instead of
+  ten cards each with their own buttons, choose the data, optionally whose it
+  is, and a time range — then Apply & Run.
+- **Time ranges can be relative or absolute.** "Last 30 days" for a standing
+  question, or explicit From and To dates for a defined period. The To calendar
+  will not offer a date before the From date.
+- **Results appear on the page** as a table, so you can check the report is what
+  you meant before downloading it.
+- **Download as Excel, CSV or PDF.** PDF is new — a landscape, print-ready
+  table with the heading, the filters used and the row count, for putting
+  straight into a pack.
+
+---
+
 ## 2.3.2 — 2026-08-19
 
 ### Bugs & fixes
