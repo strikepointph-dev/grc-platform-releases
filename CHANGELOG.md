@@ -20,6 +20,18 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.5.2 — 2026-08-19
+
+### Bugs & fixes
+- **Two report addresses could produce an error page.** Asking for an
+  impossibly long time range ("the last 99999999 months") or a report address
+  carrying a mistyped person reference returned a server error instead of a
+  report. Both are now handled: an absurd range is treated as "everything", and
+  a reference that cannot exist is ignored rather than crashing. Reports are
+  shareable links, so a hand-edited or truncated one should never break the page.
+
+---
+
 ## 2.5.1 — 2026-08-19
 
 ### Bugs & fixes

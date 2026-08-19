@@ -1,11 +1,10 @@
 {
-  "version": "2.5.1",
+  "version": "2.5.2",
   "released_at": "2026-08-19",
   "features": [],
   "actions": [],
   "fixes": [
-    "**The report filters are readable again.** Status, Role and the rest were rendered as a row of checkboxes with no spacing, labels running into the next box, wrapping across the form. Each filter is now a single button that opens a short list \u2014 and says what it is filtering on, so you can read the active filters without opening anything: \"Status: Published\", or \"Status: 3 selected\". Filters where only one answer is possible, such as Account status, stay an ordinary dropdown.",
-    "The underlying cause is fixed too: controls built while you use the page were relying on styling that is only assembled when the software is built, so it never reached them. They now carry their own. ---"
+    "**Two report addresses could produce an error page.** Asking for an impossibly long time range (\"the last 99999999 months\") or a report address carrying a mistyped person reference returned a server error instead of a report. Both are now handled: an absurd range is treated as \"everything\", and a reference that cannot exist is ignored rather than crashing. Reports are shareable links, so a hand-edited or truncated one should never break the page. ---"
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.5.1"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.5.2"
 }
