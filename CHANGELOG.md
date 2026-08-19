@@ -20,6 +20,22 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.5.1 — 2026-08-19
+
+### Bugs & fixes
+- **The report filters are readable again.** Status, Role and the rest were
+  rendered as a row of checkboxes with no spacing, labels running into the next
+  box, wrapping across the form. Each filter is now a single button that opens
+  a short list — and says what it is filtering on, so you can read the active
+  filters without opening anything: "Status: Published", or "Status: 3
+  selected". Filters where only one answer is possible, such as Account status,
+  stay an ordinary dropdown.
+- The underlying cause is fixed too: controls built while you use the page were
+  relying on styling that is only assembled when the software is built, so it
+  never reached them. They now carry their own.
+
+---
+
 ## 2.5.0 — 2026-08-19
 
 ### New features
