@@ -20,6 +20,18 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.5.4 — 2026-08-19
+
+### Bugs & fixes
+- **The AWS installer now comes with the release.** The hosting guide told you
+  to paste the contents of `install.sh`, but that file was not in the download —
+  it had to be sent to you separately, and a new server could not be set up from
+  the release alone. It is now attached to the release on its own, so it can be
+  opened and copied in one step, and it is also inside the kit alongside a copy
+  of the hosting guide.
+
+---
+
 ## 2.5.3 — 2026-08-19
 
 ### New features

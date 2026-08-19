@@ -1,11 +1,10 @@
 {
-  "version": "2.5.3",
+  "version": "2.5.4",
   "released_at": "2026-08-19",
-  "features": [
-    "**The AWS hosting guide has been rewritten for this release.** It now covers turning on IMDSv2 when the server is launched (two dropdowns that remove a whole class of attack), a \"finish the job\" section for the three things the installer cannot decide for you \u2014 getting backups off the instance, setting the idle sign-out, and checking the background worker is running \u2014 and a troubleshooting table extended with the problems people have actually hit: an old version showing after an update, a version badge that says \"Latest\" when it is not, scheduled reports that never arrive, and files that download without signing in.",
-    "**Updating is documented as it now behaves.** `./update.sh` with no arguments reports what you are running and what is available without changing anything. The guide also gives the one-time extra step needed when coming from v2.0.1 or earlier, whose update script predates two fixes it depends on. ---"
-  ],
+  "features": [],
   "actions": [],
-  "fixes": [],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.5.3"
+  "fixes": [
+    "**The AWS installer now comes with the release.** The hosting guide told you to paste the contents of `install.sh`, but that file was not in the download \u2014 it had to be sent to you separately, and a new server could not be set up from the release alone. It is now attached to the release on its own, so it can be opened and copied in one step, and it is also inside the kit alongside a copy of the hosting guide. ---"
+  ],
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.5.4"
 }
