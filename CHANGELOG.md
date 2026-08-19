@@ -20,6 +20,25 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.6.0 — 2026-08-20
+
+### Bugs & fixes
+- **Changing a document's review schedule now moves its open review cycle.**
+  A policy published on an annual schedule and switched to monthly showed the
+  new date on the document and the old one — a year out — on Review Trackers.
+  The tracker is the page the review team works from, so the wrong date was the
+  one people saw. The open cycle now follows the document. Reviews that have
+  already been completed keep their original date, because that is the audit
+  record of what was due when they were done.
+- **The review cycle page no longer offers a Save button with nothing to save.**
+  A review cycle has no fields anyone edits by hand — every one is filled in by
+  the system as the cycle moves — so the page showed a Save button above an
+  empty form, and pressing it did nothing. It now offers the two things a cycle
+  can actually do: **Start review** and **Complete review**, with a box for the
+  remarks a completion requires.
+
+---
+
 ## 2.5.4 — 2026-08-19
 
 ### Bugs & fixes

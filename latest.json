@@ -1,10 +1,11 @@
 {
-  "version": "2.5.4",
-  "released_at": "2026-08-19",
+  "version": "2.6.0",
+  "released_at": "2026-08-20",
   "features": [],
   "actions": [],
   "fixes": [
-    "**The AWS installer now comes with the release.** The hosting guide told you to paste the contents of `install.sh`, but that file was not in the download \u2014 it had to be sent to you separately, and a new server could not be set up from the release alone. It is now attached to the release on its own, so it can be opened and copied in one step, and it is also inside the kit alongside a copy of the hosting guide. ---"
+    "**Changing a document's review schedule now moves its open review cycle.** A policy published on an annual schedule and switched to monthly showed the new date on the document and the old one \u2014 a year out \u2014 on Review Trackers. The tracker is the page the review team works from, so the wrong date was the one people saw. The open cycle now follows the document. Reviews that have already been completed keep their original date, because that is the audit record of what was due when they were done.",
+    "**The review cycle page no longer offers a Save button with nothing to save.** A review cycle has no fields anyone edits by hand \u2014 every one is filled in by the system as the cycle moves \u2014 so the page showed a Save button above an empty form, and pressing it did nothing. It now offers the two things a cycle can actually do: **Start review** and **Complete review**, with a box for the remarks a completion requires. ---"
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.5.4"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.6.0"
 }
