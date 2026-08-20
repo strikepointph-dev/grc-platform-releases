@@ -20,6 +20,17 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.6.4 — 2026-08-20
+
+### Bugs & fixes
+- **The installer no longer names a version in its prompt.** It offered a real
+  version as a format example, which went stale the moment the next release
+  shipped — and anyone typing it would install that older version successfully,
+  with nothing to say so. The prompt now shows the shape only (`vX.Y.Z`), so
+  your hosting guide is the single place that names the version to install.
+
+---
+
 ## 2.6.3 — 2026-08-20
 
 ### Bugs & fixes

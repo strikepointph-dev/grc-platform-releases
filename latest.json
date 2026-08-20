@@ -1,10 +1,10 @@
 {
-  "version": "2.6.3",
+  "version": "2.6.4",
   "released_at": "2026-08-20",
   "features": [],
   "actions": [],
   "fixes": [
-    "**The installer no longer suggests an old version to type.** Its prompt gave a specific version as an example, and anyone taking that at face value installed it \u2014 successfully and silently, ending up several releases behind with nothing to indicate it. It now asks for the version named in your hosting guide, so the guide is the single place a version is stated. ---"
+    "**The installer no longer names a version in its prompt.** It offered a real version as a format example, which went stale the moment the next release shipped \u2014 and anyone typing it would install that older version successfully, with nothing to say so. The prompt now shows the shape only (`vX.Y.Z`), so your hosting guide is the single place that names the version to install. ---"
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.6.3"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.6.4"
 }
