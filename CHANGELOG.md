@@ -20,6 +20,41 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.6.5 — 2026-08-20
+
+### Bugs & fixes
+- **A new installation no longer stops halfway through.** The installer creates
+  the platform's three secrets by running the application image, but the image
+  starts the application first, and the application refuses to start without the
+  very secret being created. Every new installation stopped at step 5 of 7 with
+  a page of technical output and no explanation. Installs now run to the end.
+- **A new installation's secret key is no longer cut short.** The generated key
+  could contain a `$`, and Docker Compose reads everything from that character
+  onward as the name of something else — so the platform received only the part
+  before it, while the copy saved for you showed the whole key and nothing
+  reported a problem. Around half of installations were affected. Where the
+  character fell early, the key protecting sign-in sessions, form submissions
+  and password-reset links was only a few characters long. Keys are now built
+  from characters Compose leaves alone. **If you installed with an earlier
+  version, check yours** — Part 4 of the hosting guide shows how.
+- **The first-run setup token can now be found.** The installer and the hosting
+  guide both told you to search the log for "setup token" — wording that never
+  appears in it, so the search always came back empty and there was no way to
+  reach the setup screen from your own computer. Both now give a command that
+  works, and both say that the token is only written to the log once you have
+  opened the setup page in your browser.
+- **Two smaller installer faults.** `hostname: command not found` was printed
+  partway through on Amazon Linux 2023, and the reads of EC2 instance metadata
+  had no time limit — on an instance with metadata switched off the installer
+  looked frozen instead of carrying on. The closing summary also now reports the
+  version actually installed rather than the version you asked for.
+- **The "what's new" list no longer ends with a stray `---`.** The separator
+  between releases was being read as part of the last item, so every upgrade
+  notice shown in the platform has carried three dashes on the end of its final
+  line. Cosmetic only, and it has been there for every release so far.
+
+---
+
 ## 2.6.4 — 2026-08-20
 
 ### Bugs & fixes
