@@ -20,6 +20,31 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.6.1 — 2026-08-20
+
+### Bugs & fixes
+- **The remarks box on a review is now visible and where you need it.** It had
+  no outline at all, so the one thing you had to fill in did not look like a
+  box — and it sat above eight read-only rows, so being told "remarks are
+  required" sent people hunting up the page. It is now a properly outlined box
+  in its own "Complete this review" section, immediately above the button.
+- **Saving System settings says what happened.** The message read *The system
+  settings "System settings (Asia/Manila)" was changed successfully*, which
+  named a timezone for no reason. It now says **Changes saved successfully**,
+  and the breadcrumb shows your platform's name instead.
+- **The dashboard has less noise.** Removed the "What needs you, then what you
+  have" line and the "Site administration" heading — the latter is Django's own
+  name for itself, and it made people ask whether they were supposed to be
+  there.
+
+### New features
+- **`make_branding_assets` generates correctly sized logos.** Point it at an
+  existing logo and it produces the light and dark logos, the favicon and the
+  login banner at the right dimensions, or it draws placeholders from your
+  product name. `--apply` puts them straight into Branding.
+
+---
+
 ## 2.6.0 — 2026-08-20
 
 ### Bugs & fixes

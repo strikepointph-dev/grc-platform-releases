@@ -1,11 +1,14 @@
 {
-  "version": "2.6.0",
+  "version": "2.6.1",
   "released_at": "2026-08-20",
-  "features": [],
+  "features": [
+    "**`make_branding_assets` generates correctly sized logos.** Point it at an existing logo and it produces the light and dark logos, the favicon and the login banner at the right dimensions, or it draws placeholders from your product name. `--apply` puts them straight into Branding. ---"
+  ],
   "actions": [],
   "fixes": [
-    "**Changing a document's review schedule now moves its open review cycle.** A policy published on an annual schedule and switched to monthly showed the new date on the document and the old one \u2014 a year out \u2014 on Review Trackers. The tracker is the page the review team works from, so the wrong date was the one people saw. The open cycle now follows the document. Reviews that have already been completed keep their original date, because that is the audit record of what was due when they were done.",
-    "**The review cycle page no longer offers a Save button with nothing to save.** A review cycle has no fields anyone edits by hand \u2014 every one is filled in by the system as the cycle moves \u2014 so the page showed a Save button above an empty form, and pressing it did nothing. It now offers the two things a cycle can actually do: **Start review** and **Complete review**, with a box for the remarks a completion requires. ---"
+    "**The remarks box on a review is now visible and where you need it.** It had no outline at all, so the one thing you had to fill in did not look like a box \u2014 and it sat above eight read-only rows, so being told \"remarks are required\" sent people hunting up the page. It is now a properly outlined box in its own \"Complete this review\" section, immediately above the button.",
+    "**Saving System settings says what happened.** The message read *The system settings \"System settings (Asia/Manila)\" was changed successfully*, which named a timezone for no reason. It now says **Changes saved successfully**, and the breadcrumb shows your platform's name instead.",
+    "**The dashboard has less noise.** Removed the \"What needs you, then what you have\" line and the \"Site administration\" heading \u2014 the latter is Django's own name for itself, and it made people ask whether they were supposed to be there."
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.6.0"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.6.1"
 }
