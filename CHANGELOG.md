@@ -20,6 +20,26 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.6.2 — 2026-08-20
+
+### Upgrade note
+- **If you host behind a load balancer, point its health check at `/healthz`.**
+  A load balancer checks a server by its IP address, and the platform refuses
+  addresses it has not been told to answer for — so a health check aimed at any
+  ordinary page was refused and the server could be marked unhealthy even
+  though the site worked. `/healthz` is answered by the web server itself and
+  always replies. New installations are set up this way automatically; an
+  existing one needs the path changed once, in the target group.
+
+### Bugs & fixes
+- **A brand-new AWS installation could finish looking like it had failed.** The
+  installer's final "is it answering?" check used an address the platform is
+  not configured to answer for, so a perfectly good install ended with a
+  warning. It now uses the health endpoint, and allows the server to answer to
+  itself.
+
+---
+
 ## 2.6.1 — 2026-08-20
 
 ### Bugs & fixes
