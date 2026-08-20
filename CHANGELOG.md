@@ -20,6 +20,17 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.6.3 — 2026-08-20
+
+### Bugs & fixes
+- **The installer no longer suggests an old version to type.** Its prompt gave
+  a specific version as an example, and anyone taking that at face value
+  installed it — successfully and silently, ending up several releases behind
+  with nothing to indicate it. It now asks for the version named in your
+  hosting guide, so the guide is the single place a version is stated.
+
+---
+
 ## 2.6.2 — 2026-08-20
 
 ### Upgrade note

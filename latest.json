@@ -1,12 +1,10 @@
 {
-  "version": "2.6.2",
+  "version": "2.6.3",
   "released_at": "2026-08-20",
   "features": [],
-  "actions": [
-    "**If you host behind a load balancer, point its health check at `/healthz`.** A load balancer checks a server by its IP address, and the platform refuses addresses it has not been told to answer for \u2014 so a health check aimed at any ordinary page was refused and the server could be marked unhealthy even though the site worked. `/healthz` is answered by the web server itself and always replies. New installations are set up this way automatically; an existing one needs the path changed once, in the target group."
-  ],
+  "actions": [],
   "fixes": [
-    "**A brand-new AWS installation could finish looking like it had failed.** The installer's final \"is it answering?\" check used an address the platform is not configured to answer for, so a perfectly good install ended with a warning. It now uses the health endpoint, and allows the server to answer to itself. ---"
+    "**The installer no longer suggests an old version to type.** Its prompt gave a specific version as an example, and anyone taking that at face value installed it \u2014 successfully and silently, ending up several releases behind with nothing to indicate it. It now asks for the version named in your hosting guide, so the guide is the single place a version is stated. ---"
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.6.2"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.6.3"
 }
