@@ -20,6 +20,46 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.7.0 — 2026-09-02
+
+### New features
+- **Microsoft 365 outbound email without a password.** Microsoft has been
+  switching off basic authentication for SMTP, and on a tenant where that has
+  happened there was previously no way for the platform to send mail at all.
+  The Email delivery screen now offers **Microsoft 365 (OAuth 2.0)**, which
+  sends through the Graph API using an app registration instead of a mailbox
+  password. Choose the method, enter the tenant, client ID, secret and the
+  mailbox to send as, and press the test button. The secret is encrypted at
+  rest, and the change applies to the next message with no restart. Existing
+  SMTP configurations are untouched and keep working exactly as before. The new
+  setup guide walks a Microsoft 365 administrator through it, including
+  restricting the app to a single mailbox — without that step the permission
+  Microsoft grants would let it send as anyone in the organisation.
+- **Failures now say what to fix.** When Microsoft refuses a message the
+  platform reports which thing to go and correct — a missing admin consent, a
+  Delegated permission where an Application one was needed, an expired client
+  secret, an access policy that excludes the mailbox — rather than a status
+  code.
+
+### Upgrade note
+- **One line to change by hand, and updating alone will not do it.** The web
+  server version is pinned in the `docker-compose.yml` file on your own server,
+  which no update touches — updates replace the application, not that file. So
+  after updating you are still running the old web server, and a vulnerability
+  scan will still report it. In `/opt/grc/grc-platform/docker-compose.yml`
+  change `nginx:1.27-alpine` to `nginx:1.30-alpine`, then run
+  `docker compose up -d nginx`. It takes about a minute and the site stays up.
+  Step-by-step instructions are in the outbound email guide, Part 2.
+
+### Bugs & fixes
+- **The web server is no longer an end-of-life version.** New installations were
+  pinned to nginx 1.27, a release line that stopped receiving security updates
+  in April 2025 and which vulnerability scanners correctly report as
+  end-of-life. New installations now use nginx 1.30, the current supported line.
+  Existing installations need the one-line change described above.
+
+---
+
 ## 2.6.5 — 2026-08-20
 
 ### Bugs & fixes
