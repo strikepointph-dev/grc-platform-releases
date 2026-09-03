@@ -1,15 +1,11 @@
 {
-  "version": "2.7.0",
-  "released_at": "2026-09-02",
-  "features": [
-    "**Microsoft 365 outbound email without a password.** Microsoft has been switching off basic authentication for SMTP, and on a tenant where that has happened there was previously no way for the platform to send mail at all. The Email delivery screen now offers **Microsoft 365 (OAuth 2.0)**, which sends through the Graph API using an app registration instead of a mailbox password. Choose the method, enter the tenant, client ID, secret and the mailbox to send as, and press the test button. The secret is encrypted at rest, and the change applies to the next message with no restart. Existing SMTP configurations are untouched and keep working exactly as before. The new setup guide walks a Microsoft 365 administrator through it, including restricting the app to a single mailbox \u2014 without that step the permission Microsoft grants would let it send as anyone in the organisation.",
-    "**Failures now say what to fix.** When Microsoft refuses a message the platform reports which thing to go and correct \u2014 a missing admin consent, a Delegated permission where an Application one was needed, an expired client secret, an access policy that excludes the mailbox \u2014 rather than a status code."
-  ],
-  "actions": [
-    "**One line to change by hand, and updating alone will not do it.** The web server version is pinned in the `docker-compose.yml` file on your own server, which no update touches \u2014 updates replace the application, not that file. So after updating you are still running the old web server, and a vulnerability scan will still report it. In `/opt/grc/grc-platform/docker-compose.yml` change `nginx:1.27-alpine` to `nginx:1.30-alpine`, then run `docker compose up -d nginx`. It takes about a minute and the site stays up. Step-by-step instructions are in the outbound email guide, Part 2."
-  ],
+  "version": "2.7.1",
+  "released_at": "2026-09-03",
+  "features": [],
+  "actions": [],
   "fixes": [
-    "**The web server is no longer an end-of-life version.** New installations were pinned to nginx 1.27, a release line that stopped receiving security updates in April 2025 and which vulnerability scanners correctly report as end-of-life. New installations now use nginx 1.30, the current supported line. Existing installations need the one-line change described above."
+    "**Evidence files no longer silently lose the notice they were attached to.** Only affects deployments sending through Microsoft 365 over OAuth 2.0, which was added yesterday in 2.7.0. Microsoft caps a single send at 4 MB including the attachments, which travel a third larger than the file on disk. The platform attaches evidence up to 5 MB and scheduled reports up to 8 MB, sizes ordinary mail servers carry without complaint \u2014 so a non-conformity notice with a large photo or PDF was refused by Microsoft, and because delivery failures are deliberately swallowed, nobody was told. The notice simply never arrived. Files too large for that route are now left in the case file and named in the notice as being there, which is what the platform already did for genuinely oversized files. Deployments sending over SMTP are unaffected and keep the 5 MB and 8 MB limits.",
+    "**A failed send no longer blames your client secret.** A refusal from Microsoft at the sending stage was reported as though the credentials were wrong, sending an administrator to reissue a secret that was working. It now says what it usually is: no Exchange Online licence on the tenant, or a sending address that is not a mailbox in it."
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.7.0"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.7.1"
 }

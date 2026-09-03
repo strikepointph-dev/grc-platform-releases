@@ -20,6 +20,29 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.7.1 — 2026-09-03
+
+### Bugs & fixes
+- **Evidence files no longer silently lose the notice they were attached to.**
+  Only affects deployments sending through Microsoft 365 over OAuth 2.0, which
+  was added yesterday in 2.7.0. Microsoft caps a single send at 4 MB including
+  the attachments, which travel a third larger than the file on disk. The
+  platform attaches evidence up to 5 MB and scheduled reports up to 8 MB, sizes
+  ordinary mail servers carry without complaint — so a non-conformity notice
+  with a large photo or PDF was refused by Microsoft, and because delivery
+  failures are deliberately swallowed, nobody was told. The notice simply never
+  arrived. Files too large for that route are now left in the case file and
+  named in the notice as being there, which is what the platform already did
+  for genuinely oversized files. Deployments sending over SMTP are unaffected
+  and keep the 5 MB and 8 MB limits.
+- **A failed send no longer blames your client secret.** A refusal from
+  Microsoft at the sending stage was reported as though the credentials were
+  wrong, sending an administrator to reissue a secret that was working. It now
+  says what it usually is: no Exchange Online licence on the tenant, or a
+  sending address that is not a mailbox in it.
+
+---
+
 ## 2.7.0 — 2026-09-02
 
 ### New features
