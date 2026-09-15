@@ -1,11 +1,20 @@
 {
-  "version": "2.7.1",
-  "released_at": "2026-09-03",
-  "features": [],
-  "actions": [],
-  "fixes": [
-    "**Evidence files no longer silently lose the notice they were attached to.** Only affects deployments sending through Microsoft 365 over OAuth 2.0, which was added yesterday in 2.7.0. Microsoft caps a single send at 4 MB including the attachments, which travel a third larger than the file on disk. The platform attaches evidence up to 5 MB and scheduled reports up to 8 MB, sizes ordinary mail servers carry without complaint \u2014 so a non-conformity notice with a large photo or PDF was refused by Microsoft, and because delivery failures are deliberately swallowed, nobody was told. The notice simply never arrived. Files too large for that route are now left in the case file and named in the notice as being there, which is what the platform already did for genuinely oversized files. Deployments sending over SMTP are unaffected and keep the 5 MB and 8 MB limits.",
-    "**A failed send no longer blames your client secret.** A refusal from Microsoft at the sending stage was reported as though the credentials were wrong, sending an administrator to reissue a secret that was working. It now says what it usually is: no Exchange Online licence on the tenant, or a sending address that is not a mailbox in it."
+  "version": "2.10.0",
+  "released_at": "2026-09-15",
+  "features": [
+    "**NICAR queue bulk actions: Resolve & close, Assign to, Void / cancel.** Tick tickets, choose an action and press Run. *Resolve & close* opens a pop-up for the resolution code and resolution notes, and will not close anything without both. *Assign to\u2026* shows an **Analyst** menu beside the action menu (Viewers and Auditors are not listed); Run asks \"Assigning N tickets to Analyst: \u2026 Confirm this activity?\" with **Yes** or **No, cancel**, and the analyst is notified. *Void / cancel draft* asks for a reason. The menu only offers what applies to every ticked ticket.",
+    "**Groups use access profiles.** A group now carries one of the five access profiles instead of hand-picked permissions, and the Groups list shows its *Access profile* instead of a permission count. Anyone whose own profile is lower gains the group's profile while they are in it \u2014 every administrator is alerted when that happens, and again when it is taken away.",
+    "**Save as Draft and Submit for Approval wait for a change.** On an existing draft, *Save as Draft* stays off until something is edited, and turns off again if the edit is undone. For a record that was sent back, *Submit for Approval* also stays off until something changes \u2014 and the platform refuses resubmitting the rejected text unchanged. A draft that was never sent back can still be submitted as it is.",
+    "**A livelier risk score.** The live risk score card is transparent, centres each score, counts up or down to the new value as likelihood and impact change, and names the band underneath with an icon: Low (1\u20137), Medium (8\u201314), High (15\u201319), Critical (20\u201325)."
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.7.1"
+  "actions": [
+    "**NICARs can no longer be deleted, by anyone.** Draft NICARs could previously be deleted. A draft opened by mistake is now voided with a reason \u2014 from the queue, or with *Void / cancel draft* on its own page \u2014 and stays on record as Voided / Cancelled.",
+    "**Existing custom groups keep their permissions until you choose a profile.** They show *Not set (hand-picked permissions)* on the Groups list. Open each one and pick the access profile that matches what it is for; saving replaces the hand-picked permissions with that profile."
+  ],
+  "fixes": [
+    "**Unnumbered closed NICARs no longer show as \"draft\" in the queue.** Tickets that left Draft without a number under an earlier version now read *no number*, and voided drafts read *void*.",
+    "**The group form's Description box now appears.** It was on the form but not shown.",
+    "**The dashboard tile reads \"High & critical residual risk\"**, and the residual band filter \"High or critical after treatment (15+)\", matching the risk score card's bands."
+  ],
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.10.0"
 }

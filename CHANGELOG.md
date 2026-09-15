@@ -20,6 +20,168 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.10.0 — 2026-09-15
+
+### New features
+- **NICAR queue bulk actions: Resolve & close, Assign to, Void / cancel.** Tick
+  tickets, choose an action and press Run. *Resolve & close* opens a pop-up for the
+  resolution code and resolution notes, and will not close anything without both.
+  *Assign to…* shows an **Analyst** menu beside the action menu (Viewers and
+  Auditors are not listed); Run asks "Assigning N tickets to Analyst: … Confirm
+  this activity?" with **Yes** or **No, cancel**, and the analyst is notified.
+  *Void / cancel draft* asks for a reason. The menu only offers what applies to
+  every ticked ticket.
+- **Groups use access profiles.** A group now carries one of the five access
+  profiles instead of hand-picked permissions, and the Groups list shows its
+  *Access profile* instead of a permission count. Anyone whose own profile is
+  lower gains the group's profile while they are in it — every administrator is
+  alerted when that happens, and again when it is taken away.
+- **Save as Draft and Submit for Approval wait for a change.** On an existing
+  draft, *Save as Draft* stays off until something is edited, and turns off again
+  if the edit is undone. For a record that was sent back, *Submit for Approval*
+  also stays off until something changes — and the platform refuses resubmitting
+  the rejected text unchanged. A draft that was never sent back can still be
+  submitted as it is.
+- **A livelier risk score.** The live risk score card is transparent, centres each
+  score, counts up or down to the new value as likelihood and impact change, and
+  names the band underneath with an icon: Low (1–7), Medium (8–14), High (15–19),
+  Critical (20–25).
+
+### Upgrade note
+- **NICARs can no longer be deleted, by anyone.** Draft NICARs could previously be
+  deleted. A draft opened by mistake is now voided with a reason — from the queue,
+  or with *Void / cancel draft* on its own page — and stays on record as Voided /
+  Cancelled.
+- **Existing custom groups keep their permissions until you choose a profile.**
+  They show *Not set (hand-picked permissions)* on the Groups list. Open each one
+  and pick the access profile that matches what it is for; saving replaces the
+  hand-picked permissions with that profile.
+
+### Bugs & fixes
+- **Unnumbered closed NICARs no longer show as "draft" in the queue.** Tickets that
+  left Draft without a number under an earlier version now read *no number*, and
+  voided drafts read *void*.
+- **The group form's Description box now appears.** It was on the form but not
+  shown.
+- **The dashboard tile reads "High & critical residual risk"**, and the residual
+  band filter "High or critical after treatment (15+)", matching the risk score
+  card's bands.
+
+## 2.9.0 — 2026-09-15
+
+### New features
+- **A published document reads as one sheet.** Title, version, author, dates,
+  category and business unit sit on the left; document status, approval status,
+  who approved (or rejected) it and who submitted it sit on the right. Below them
+  are the description, document link (with a copy button), attachment and copy
+  holder, then the version history, and *Review schedule* and *Review history* as
+  tabs — far less scrolling. The *Body* field is now called **Description**.
+- **Change record status opens as a pop-up.** The button at the top of every
+  document, risk and control opens a small form: pick the status, give a reason,
+  confirm. Close it with the X or by clicking outside it.
+- **Archive and mark inactive from the list.** Tick published documents, pick
+  *Archive* or *Mark inactive / deprecated*, press Run, and the same pop-up asks
+  for the reason — no page change. The action menu only offers what applies to
+  every ticked record, so *Revise this document* no longer appears for a document
+  still awaiting approval.
+- **Revise from the list opens the new revision in a new tab.**
+- **Security alerts for record status changes.** Whenever someone changes a
+  record's status — Archived, Inactive / Deprecated, Void, or reinstated —
+  administrators, GRC Managers and the
+  record's owner get a bell notification and an email saying who changed it, from
+  what, to what, and why — with a prompt to report it to the Security Team if they
+  do not recognise the activity. Automatic deprecation when a revision is
+  published does not raise an alert.
+- **Security alerts for access changes.** When a user is disabled, re-enabled, or
+  moved to a higher or lower access profile, every administrator and the user
+  themselves are notified by bell and email.
+- **GRC distribution list for every notification email.** *Administration › Email
+  delivery* has a new *GRC distribution list* field. The addresses there receive a
+  copy (BCC) of every notification email the platform sends.
+- **Submitting for approval confirms who was told.** The submitter now gets a bell
+  notification and a message saying how many approvers were notified — or that no
+  other approver is set up yet.
+
+### Upgrade note
+- **The GRC distribution email moved from System settings to Email delivery.** The
+  address already saved is carried over automatically, and it now receives every
+  notification email, not only NICAR notices.
+
+### Bugs & fixes
+- **Breadcrumbs no longer repeat the section name** ("Policies › Policies › HR
+  Policy" is now "Policies › HR Policy").
+- **The Record status label is no longer repeated** on the record page.
+- **The live risk score card no longer covers the record status bar** on the risk
+  page.
+
+## 2.8.0 — 2026-09-15
+
+### New features
+- **Records are marked, never deleted.** Documents, risks and controls now have a
+  record status alongside their approval status: **Void / Cancelled** for
+  something created by mistake or as a duplicate, **Archived** for something no
+  longer in use, and **Inactive / Deprecated** for something replaced by a newer
+  version. Open any record and use *Change record status* at the top. A reason is
+  required and saved with your name and the time. The record stays on file and
+  in its history, drops out of the working lists and every dashboard figure, and
+  can be found again with the new *Record status* filter. Only GRC Managers and
+  Administrators can change it.
+- **Publishing a revision retires the version it replaces.** The previous version
+  is marked Inactive / Deprecated automatically and its review cycle is closed,
+  so there is only ever one version of a document in force.
+- **Access profiles.** A user's *GRC role* is now called their **access profile**,
+  and it is the only thing that decides what they can do. The Groups, User
+  permissions and Staff boxes are gone from the user page, where they could
+  contradict the profile. *Administration › Access profiles* shows in plain words
+  what each profile allows. Anyone holding access outside their profile is
+  flagged on their own page, with an action to reset them.
+- **Two new dashboard columns.** *Review in progress* counts periodic reviews that
+  have been started, and *Inactive* counts archived and deprecated records. The
+  column that used to say *In review* now says **Awaiting approval**, which is
+  what it has always counted.
+
+### Upgrade note
+- **Documents with more than one version in force are corrected automatically.**
+  Earlier versions left the old version of a revised document Published, with
+  its own review cycle and reminders. On upgrade, the most recently approved
+  version of each document stays in force. Any others are marked Inactive /
+  Deprecated with the reason written on the record, and their open review cycles
+  are closed. Nothing is deleted. If a different version should be the one in
+  force, archive the kept version and reinstate the other.
+- **Documents, risks and controls can no longer be deleted, by anyone.**
+  Administrators and GRC Managers could previously delete a draft document that
+  had never been published, and any risk or control. A published document could
+  not be deleted by anyone, even though the permission was listed. Use **Void /
+  Cancelled** for something created by mistake instead: it stays on file with the
+  reason, and stops counting. Draft NICARs can still be deleted, as before.
+- **Documents marked Retired become Archived.** Retired could only be set by
+  hand-editing a hidden field. Those documents keep their history, and their open
+  review cycles are closed.
+
+### Bugs & fixes
+- **A review can no longer be completed before it is started.** *Complete review*
+  appeared on a cycle nobody had begun, and the platform accepted it. It now
+  appears only after *Start review*, and the platform refuses the shortcut even if
+  it is attempted directly.
+- **A review that went overdue before anyone started it can still be started.**
+  *Start review* was only offered on Pending cycles.
+- **Changing a document's review schedule now moves an overdue review too.** The
+  due date only followed the change for cycles that were not yet overdue.
+- **Due and effective dates no longer land a day early.** A review completed, or a
+  document approved, before 8am Philippine time was dated the previous day.
+- **Bulk *Complete review* reports what it actually did.** It showed a success
+  message even when it had completed nothing.
+- **Voiding a mistaken revision no longer blocks the next one.** The corrected
+  revision takes the next free version number.
+- **Refusal pages explain themselves.** A few pages answered with a bare
+  "Forbidden" line, and an expired form showed a technical notice about tokens.
+  Both now show the platform's own page, with the reason and a way back.
+- **The delete page no longer promises what nobody can do.** It told people an
+  administrator could remove the records, which was not true for anyone. An old
+  delete link now opens *Change record status*, with the reason.
+
+---
+
 ## 2.7.1 — 2026-09-03
 
 ### Bugs & fixes
