@@ -20,6 +20,96 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.13.0 — 2026-09-18
+
+### New features
+- **Pages keep themselves current.** A new or changed record appears in every open
+  list (NICAR queue, documents, users…) within a few seconds, highlighted once —
+  no refresh. The list waits while you have a row ticked or a pop-up open.
+- **Who's viewing.** A record shows the initials of everyone else who has it open,
+  beside History, and names them above the form. They appear within about two
+  seconds and leave when that person closes the tab.
+- **Work notes arrive while you read.** A colleague's note appears in the ticket's
+  Notes tab without a reload, and the Notes counter turns red when you have unread
+  notes. The ticket's owner is told by bell and email when a note is added.
+- **"Someone else saved this record"** — if a colleague saves a record you have
+  open, the page says so and offers Reload, before you overwrite their changes.
+- **NICAR follow-ups are now actually sent, and an unanswered notice closes
+  itself.** Three follow-ups, spaced by priority — 1 - Critical every 12 hours,
+  2 - High every 24 hours, 3 - Moderate every 3 days, 4 - Low every 5 days. One
+  interval after the third, the NICAR closes as **Non-responsive**, the closure
+  notice goes out, and the owner is told. A recorded reply, or closing the ticket
+  by hand, stops the ladder at once.
+- **NICAR queue redesign.** Two tabs — *All open work* and *My tickets* — with
+  Open and In progress shown by default; columns NICAR No., Opened (date and time),
+  Priority (coloured dot), State, Short description, Department / Business unit and
+  Assigned to. Department and Assigned to open a filtered queue in a new tab. The
+  gear beside Filters lets each person choose and order their own columns.
+- **NICAR ticket redesign.** Two-column form; recipients as To / Cc chips with
+  address checking; attachments as chips; Resolve & close asks for the resolution
+  code and notes in a pop-up; Notes, SLA, Resolution and Log trail as tabs.
+- **Groups: one per person, managed from the group.** A group's page lists everyone
+  who is in no group beside the group's members, with › and ‹ to move people.
+  Joining a group gives that group's access profile; every move is recorded in the
+  group's History and announced to administrators. Groups are disabled or enabled
+  from the list (**Change state**), never deleted.
+- **Users.** The list shows Username, First name, Last name, Position, Email, Member
+  of, Access profile and Active. The user page is redesigned around a profile card
+  (picture, name, position, status, last login, date joined). **Reset User
+  Password** emails a one-time link (never the distribution list); **Set Password**
+  sits beside it; **Revoke session / Log out this user** ends every session.
+  Accounts are deactivated, never deleted.
+- **Profile pictures, the account button and Profile Settings.** The button at the
+  foot of the sidebar shows your picture, name and position and opens your profile
+  card: Change Profile Picture, status, theme, Logout, and a gear to **Profile
+  Settings** — your own page, read-only except for your picture, your card's colour
+  (a palette of solid and gradient colours) and, for accounts that sign in with a
+  password here, Change Password. Profile cards show the company logo. Pictures also
+  appear in "who's viewing".
+- **The user page saves in place.** Save stays disabled until something changes and
+  returns to the same page; the Active switch sits on the profile card.
+- **Bulk actions on users:** **Modify Position** and **Add Users to Group**, each with
+  its own menu beside the action menu (moving people between groups asks first).
+- **Add, change, view or delete a position — or any lookup behind a ⋮ — in a pop-up**
+  on the page instead of a separate browser window.
+- **Login page** has a new city illustration, drawn for light and dark themes.
+- **NICAR No.** is shown as a link in the queue; document lists show the owner's
+  name only.
+- **Documents.** The attachment has a Download button, the file picker only offers
+  accepted file types, and Filters has a Last updated range (Today, Yesterday, this
+  week, month, year).
+- **The sidebar has one width** (320 px). It could be dragged narrow enough to wrap
+  and overlap the menu and the profile card.
+- **Settings pages name themselves once** — "Branding settings" rather than
+  "Branding settings › Branding settings (…)".
+
+### Upgrade note
+- **Each person now belongs to exactly one group.** Anyone who was in more than
+  one keeps a single group — a team group matching their profile if there is one,
+  otherwise their profile's own group — and each change is written to the log.
+  Someone removed from their group has no access until they are added to another.
+- **System Purge has been removed.** A one-screen wipe of the platform is the first
+  thing a stolen administrator session looks for. Any purge request on record is
+  written to the application log before its table is dropped.
+- **Open NICARs that have gone unanswered will be chased on the first day after
+  upgrading.** The follow-ups were described on every ticket but never sent, so an
+  old ticket is due its first follow-up at once. Before upgrading, close in
+  **NICAR Queue** any open ticket that was settled outside the platform, or record
+  the reply date on it, and it will be left alone.
+
+### Bugs & fixes
+- **Actions that send email no longer make you wait for the mail server.**
+  Notification emails are sent in the background; adding a note or approving a
+  document returns at once.
+- **A record left open no longer keeps an idle session signed in.** The live
+  updates do not count as activity for the idle sign-out.
+- **System settings shows the developers' logos** (777AppBuilders | ISNEK) in a neutral
+  grey that reads on both themes; the developer's name is corrected to ISNEK.
+- **Form labels sit against their fields** (right-aligned), and read-only values
+  such as Author line up with their label.
+- **The final follow-up's deadline is no longer in the past**, and the ticket page
+  shows both the next follow-up and the Non-responsive closure date.
+
 ## 2.10.0 — 2026-09-15
 
 ### New features

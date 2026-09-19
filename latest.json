@@ -1,20 +1,37 @@
 {
-  "version": "2.10.0",
-  "released_at": "2026-09-15",
+  "version": "2.13.0",
+  "released_at": "2026-09-18",
   "features": [
-    "**NICAR queue bulk actions: Resolve & close, Assign to, Void / cancel.** Tick tickets, choose an action and press Run. *Resolve & close* opens a pop-up for the resolution code and resolution notes, and will not close anything without both. *Assign to\u2026* shows an **Analyst** menu beside the action menu (Viewers and Auditors are not listed); Run asks \"Assigning N tickets to Analyst: \u2026 Confirm this activity?\" with **Yes** or **No, cancel**, and the analyst is notified. *Void / cancel draft* asks for a reason. The menu only offers what applies to every ticked ticket.",
-    "**Groups use access profiles.** A group now carries one of the five access profiles instead of hand-picked permissions, and the Groups list shows its *Access profile* instead of a permission count. Anyone whose own profile is lower gains the group's profile while they are in it \u2014 every administrator is alerted when that happens, and again when it is taken away.",
-    "**Save as Draft and Submit for Approval wait for a change.** On an existing draft, *Save as Draft* stays off until something is edited, and turns off again if the edit is undone. For a record that was sent back, *Submit for Approval* also stays off until something changes \u2014 and the platform refuses resubmitting the rejected text unchanged. A draft that was never sent back can still be submitted as it is.",
-    "**A livelier risk score.** The live risk score card is transparent, centres each score, counts up or down to the new value as likelihood and impact change, and names the band underneath with an icon: Low (1\u20137), Medium (8\u201314), High (15\u201319), Critical (20\u201325)."
+    "**Pages keep themselves current.** A new or changed record appears in every open list (NICAR queue, documents, users\u2026) within a few seconds, highlighted once \u2014 no refresh. The list waits while you have a row ticked or a pop-up open.",
+    "**Who's viewing.** A record shows the initials of everyone else who has it open, beside History, and names them above the form. They appear within about two seconds and leave when that person closes the tab.",
+    "**Work notes arrive while you read.** A colleague's note appears in the ticket's Notes tab without a reload, and the Notes counter turns red when you have unread notes. The ticket's owner is told by bell and email when a note is added.",
+    "**\"Someone else saved this record\"** \u2014 if a colleague saves a record you have open, the page says so and offers Reload, before you overwrite their changes.",
+    "**NICAR follow-ups are now actually sent, and an unanswered notice closes itself.** Three follow-ups, spaced by priority \u2014 1 - Critical every 12 hours, 2 - High every 24 hours, 3 - Moderate every 3 days, 4 - Low every 5 days. One interval after the third, the NICAR closes as **Non-responsive**, the closure notice goes out, and the owner is told. A recorded reply, or closing the ticket by hand, stops the ladder at once.",
+    "**NICAR queue redesign.** Two tabs \u2014 *All open work* and *My tickets* \u2014 with Open and In progress shown by default; columns NICAR No., Opened (date and time), Priority (coloured dot), State, Short description, Department / Business unit and Assigned to. Department and Assigned to open a filtered queue in a new tab. The gear beside Filters lets each person choose and order their own columns.",
+    "**NICAR ticket redesign.** Two-column form; recipients as To / Cc chips with address checking; attachments as chips; Resolve & close asks for the resolution code and notes in a pop-up; Notes, SLA, Resolution and Log trail as tabs.",
+    "**Groups: one per person, managed from the group.** A group's page lists everyone who is in no group beside the group's members, with \u203a and \u2039 to move people. Joining a group gives that group's access profile; every move is recorded in the group's History and announced to administrators. Groups are disabled or enabled from the list (**Change state**), never deleted.",
+    "**Users.** The list shows Username, First name, Last name, Position, Email, Member of, Access profile and Active. The user page is redesigned around a profile card (picture, name, position, status, last login, date joined). **Reset User Password** emails a one-time link (never the distribution list); **Set Password** sits beside it; **Revoke session / Log out this user** ends every session. Accounts are deactivated, never deleted.",
+    "**Profile pictures, the account button and Profile Settings.** The button at the foot of the sidebar shows your picture, name and position and opens your profile card: Change Profile Picture, status, theme, Logout, and a gear to **Profile Settings** \u2014 your own page, read-only except for your picture, your card's colour (a palette of solid and gradient colours) and, for accounts that sign in with a password here, Change Password. Profile cards show the company logo. Pictures also appear in \"who's viewing\".",
+    "**The user page saves in place.** Save stays disabled until something changes and returns to the same page; the Active switch sits on the profile card.",
+    "**Bulk actions on users:** **Modify Position** and **Add Users to Group**, each with its own menu beside the action menu (moving people between groups asks first).",
+    "**Add, change, view or delete a position \u2014 or any lookup behind a \u22ee \u2014 in a pop-up** on the page instead of a separate browser window.",
+    "**Login page** has a new city illustration, drawn for light and dark themes.",
+    "**NICAR No.** is shown as a link in the queue; document lists show the owner's name only.",
+    "**Documents.** The attachment has a Download button, the file picker only offers accepted file types, and Filters has a Last updated range (Today, Yesterday, this week, month, year).",
+    "**The sidebar has one width** (320 px). It could be dragged narrow enough to wrap and overlap the menu and the profile card.",
+    "**Settings pages name themselves once** \u2014 \"Branding settings\" rather than \"Branding settings \u203a Branding settings (\u2026)\"."
   ],
   "actions": [
-    "**NICARs can no longer be deleted, by anyone.** Draft NICARs could previously be deleted. A draft opened by mistake is now voided with a reason \u2014 from the queue, or with *Void / cancel draft* on its own page \u2014 and stays on record as Voided / Cancelled.",
-    "**Existing custom groups keep their permissions until you choose a profile.** They show *Not set (hand-picked permissions)* on the Groups list. Open each one and pick the access profile that matches what it is for; saving replaces the hand-picked permissions with that profile."
+    "**Each person now belongs to exactly one group.** Anyone who was in more than one keeps a single group \u2014 a team group matching their profile if there is one, otherwise their profile's own group \u2014 and each change is written to the log. Someone removed from their group has no access until they are added to another.",
+    "**System Purge has been removed.** A one-screen wipe of the platform is the first thing a stolen administrator session looks for. Any purge request on record is written to the application log before its table is dropped.",
+    "**Open NICARs that have gone unanswered will be chased on the first day after upgrading.** The follow-ups were described on every ticket but never sent, so an old ticket is due its first follow-up at once. Before upgrading, close in **NICAR Queue** any open ticket that was settled outside the platform, or record the reply date on it, and it will be left alone."
   ],
   "fixes": [
-    "**Unnumbered closed NICARs no longer show as \"draft\" in the queue.** Tickets that left Draft without a number under an earlier version now read *no number*, and voided drafts read *void*.",
-    "**The group form's Description box now appears.** It was on the form but not shown.",
-    "**The dashboard tile reads \"High & critical residual risk\"**, and the residual band filter \"High or critical after treatment (15+)\", matching the risk score card's bands."
+    "**Actions that send email no longer make you wait for the mail server.** Notification emails are sent in the background; adding a note or approving a document returns at once.",
+    "**A record left open no longer keeps an idle session signed in.** The live updates do not count as activity for the idle sign-out.",
+    "**System settings shows the developers' logos** (777AppBuilders | ISNEK) in a neutral grey that reads on both themes; the developer's name is corrected to ISNEK.",
+    "**Form labels sit against their fields** (right-aligned), and read-only values such as Author line up with their label.",
+    "**The final follow-up's deadline is no longer in the past**, and the ticket page shows both the next follow-up and the Non-responsive closure date."
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.10.0"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.13.0"
 }
