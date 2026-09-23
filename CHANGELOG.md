@@ -20,6 +20,102 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.14.0 — 2026-09-23
+
+### New features
+- **Controls as a tree.** All Controls shows each parent control with ▶ and a count;
+  its sub-controls open indented beneath it, several levels deep (Req 1 › 1.2 ›
+  1.2.1). PCI DSS v4.0.1 is the framework shown when the page opens. The bar reads:
+  search, Manage Scope, Expand all / Collapse all, Filters. Add a control as a Parent
+  Control or a Sub-Control — a sub-control picks its parent from a searchable list
+  and takes its framework and category. Controls also carry testing guidance.
+- **PCI DSS v4.0.1 sub-controls.** Requirements 1–12, their 63 sections (1.1, 1.2…)
+  and 250 sub-controls, added automatically where PCI DSS is set up, each with a
+  summary and testing guidance.
+- **Search as you type** on every list with a search box: rows filter while you type,
+  forgiving typos and missing letters ("netwrk diagrm" finds "network diagram"); ×
+  clears it; Enter still searches everything. On Controls a match shows with the
+  controls above it.
+- **Pages use the full width of the screen** instead of a centred column.
+- **Manage Scope** (administrators). Switch sub-controls in or out of scope — with a
+  required justification — or apply a preset: SAQ A, SAQ C, SAQ D, or full scope.
+  Out-of-scope controls are hidden from everyone but administrators and never count
+  towards readiness. After a change, **Save as preset** names the scope as it stands
+  and adds it to the preset list, to apply again later.
+- **Assign to Framework** in the Controls bulk menu (administrators): move the ticked
+  controls, each with its sub-controls, to another framework.
+- **EasyComply (Beta)** under Overview: audit readiness as a guided course. An
+  administrator sets up a track in four steps (framework, scope, audit date and lead,
+  launch) and the team is emailed. Each in-scope control becomes a task in four
+  steps — guidance, policy mapping, risk check, evidence with an expiry date — that
+  saves as you go. Completed tasks raise the readiness bar (also on the dashboard);
+  an editor's completion waits for a manager's review; managers can re-open. Auditors
+  get an inspection view with one-click evidence, Accept Evidence / Request
+  Clarification, and Q&A per control. A track follows later scope changes: a control
+  brought into scope gets its task, one taken out stops counting (its work is kept).
+- **EasyComply audit cycle.** At 100% a manager clicks **Submit for Audit Review**; the
+  track is read-only while auditors review it. Auditors mark each control **Approve**,
+  **Needs Clarification** or **Reject** (with remarks, and for a rejection what must be
+  replaced), watching **Audit Completion** climb. With findings, **Submit with Findings**
+  returns the track: those controls re-open with the remarks, the team answers and
+  replaces what was rejected, and resubmits. With none, **Mark as Complete, Issue a
+  Certificate** opens the certificate form — live preview, a drawn signature — and
+  closes the track. Every step is kept in an audit log.
+- **Audit Review History** tab: every track with its status, dates, framework and
+  auditor; completed ones open read-only and their certificates download.
+- **Certificates.** Certification › Templates designs certificates in the app with a
+  live preview: a formatting toolbar for the body (font, size, bold, italic, underline,
+  colour, alignment, lists, indent, quote, strikethrough, clear formatting), variables
+  such as {{company}} and {{framework_name}}, colour, frame and logo. The PDF carries
+  the same formatting. Save stays off until something changes, and leaving with unsaved
+  changes asks whether to save them. Certification › Records lists every certificate.
+- **Certificates are emailed.** Issuing one sends a congratulatory email with the PDF
+  attached — To, Cc and Bcc chosen on the form as on a NICAR, the team by default, and
+  both distribution lists always in Cc.
+- **Internal Audit Team distribution list** beside the GRC Team one (Email delivery).
+  Tracks submitted for audit review go to the auditors and this list; certificates are
+  copied to both.
+- **Company name and address** in Branding, above the product name. {{company}} on a
+  certificate is the company name.
+- **Auditors get their own sidebar**: Dashboard (led by the audit), Audit › Audit
+  Review / Audit History, Certification › Records / Templates, and a read-only Library
+  (Policies, Controls, Risk Register).
+- **One track per framework, stated plainly.** Choosing a framework already in
+  progress in the setup wizard says so and offers the existing track.
+- With two or more tracks open, everyone but an administrator starts EasyComply by
+  choosing the framework to work on.
+- The profile card says **Account Created**, not Date Joined.
+- **Security alerts** name the MITRE ATT&CK technique in the subject (Privilege
+  Escalation, Account Access Removal, Account Manipulation) and read SECURITY ALERT,
+  not "Rejected".
+
+### Upgrade note
+- **Readiness percentages change.** They now count in-scope controls with no
+  sub-controls of their own, not the headings above them — so PCI DSS is measured
+  across its 250 sub-controls instead of its 12 requirements.
+- **Security alerts go to the GRC distribution list only** — access changes, record
+  status changes and sign-in settings changes. People involved still see them in
+  their bell. Set Administration › Email delivery › GRC distribution list to the
+  team's mailbox before upgrading.
+- **Every notification email now has one recipient.** Personal notices go to each
+  person separately, plus one copy to the distribution list. Email subjects no longer
+  start with the product name.
+
+### Bugs & fixes
+- **Approving a control no longer fails.** Approve on a control awaiting approval hit an
+  error page: the form it posts back has no framework field once the record is read-only.
+- **"Awaiting approval" on the dashboard opens what is waiting.** It always opened the
+  documents list, which was empty when the items waiting were controls or risks.
+- **Disabling or re-enabling a user asks why.** The reason is kept in History with who
+  did it, and named in the security alert. A disabled account's other fields are
+  read-only until it is re-enabled, and bulk disable / re-enable are recorded too.
+- **An access change now reaches the administrator who made it** as well as everyone
+  else — their own bell keeps the record.
+- **Auditors no longer see a track before it is submitted.** Audit History and Audit
+  Review offered View on tracks still being prepared, showing each control's progress.
+- **Addresses no longer leak between recipients.** One notification email used to
+  list every administrator and the affected person together, visible to all of them.
+
 ## 2.13.0 — 2026-09-18
 
 ### New features

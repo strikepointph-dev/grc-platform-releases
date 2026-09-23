@@ -1,37 +1,38 @@
 {
-  "version": "2.13.0",
-  "released_at": "2026-09-18",
+  "version": "2.14.0",
+  "released_at": "2026-09-23",
   "features": [
-    "**Pages keep themselves current.** A new or changed record appears in every open list (NICAR queue, documents, users\u2026) within a few seconds, highlighted once \u2014 no refresh. The list waits while you have a row ticked or a pop-up open.",
-    "**Who's viewing.** A record shows the initials of everyone else who has it open, beside History, and names them above the form. They appear within about two seconds and leave when that person closes the tab.",
-    "**Work notes arrive while you read.** A colleague's note appears in the ticket's Notes tab without a reload, and the Notes counter turns red when you have unread notes. The ticket's owner is told by bell and email when a note is added.",
-    "**\"Someone else saved this record\"** \u2014 if a colleague saves a record you have open, the page says so and offers Reload, before you overwrite their changes.",
-    "**NICAR follow-ups are now actually sent, and an unanswered notice closes itself.** Three follow-ups, spaced by priority \u2014 1 - Critical every 12 hours, 2 - High every 24 hours, 3 - Moderate every 3 days, 4 - Low every 5 days. One interval after the third, the NICAR closes as **Non-responsive**, the closure notice goes out, and the owner is told. A recorded reply, or closing the ticket by hand, stops the ladder at once.",
-    "**NICAR queue redesign.** Two tabs \u2014 *All open work* and *My tickets* \u2014 with Open and In progress shown by default; columns NICAR No., Opened (date and time), Priority (coloured dot), State, Short description, Department / Business unit and Assigned to. Department and Assigned to open a filtered queue in a new tab. The gear beside Filters lets each person choose and order their own columns.",
-    "**NICAR ticket redesign.** Two-column form; recipients as To / Cc chips with address checking; attachments as chips; Resolve & close asks for the resolution code and notes in a pop-up; Notes, SLA, Resolution and Log trail as tabs.",
-    "**Groups: one per person, managed from the group.** A group's page lists everyone who is in no group beside the group's members, with \u203a and \u2039 to move people. Joining a group gives that group's access profile; every move is recorded in the group's History and announced to administrators. Groups are disabled or enabled from the list (**Change state**), never deleted.",
-    "**Users.** The list shows Username, First name, Last name, Position, Email, Member of, Access profile and Active. The user page is redesigned around a profile card (picture, name, position, status, last login, date joined). **Reset User Password** emails a one-time link (never the distribution list); **Set Password** sits beside it; **Revoke session / Log out this user** ends every session. Accounts are deactivated, never deleted.",
-    "**Profile pictures, the account button and Profile Settings.** The button at the foot of the sidebar shows your picture, name and position and opens your profile card: Change Profile Picture, status, theme, Logout, and a gear to **Profile Settings** \u2014 your own page, read-only except for your picture, your card's colour (a palette of solid and gradient colours) and, for accounts that sign in with a password here, Change Password. Profile cards show the company logo. Pictures also appear in \"who's viewing\".",
-    "**The user page saves in place.** Save stays disabled until something changes and returns to the same page; the Active switch sits on the profile card.",
-    "**Bulk actions on users:** **Modify Position** and **Add Users to Group**, each with its own menu beside the action menu (moving people between groups asks first).",
-    "**Add, change, view or delete a position \u2014 or any lookup behind a \u22ee \u2014 in a pop-up** on the page instead of a separate browser window.",
-    "**Login page** has a new city illustration, drawn for light and dark themes.",
-    "**NICAR No.** is shown as a link in the queue; document lists show the owner's name only.",
-    "**Documents.** The attachment has a Download button, the file picker only offers accepted file types, and Filters has a Last updated range (Today, Yesterday, this week, month, year).",
-    "**The sidebar has one width** (320 px). It could be dragged narrow enough to wrap and overlap the menu and the profile card.",
-    "**Settings pages name themselves once** \u2014 \"Branding settings\" rather than \"Branding settings \u203a Branding settings (\u2026)\"."
+    "**Controls as a tree.** All Controls shows each parent control with \u25b6 and a count; its sub-controls open indented beneath it, several levels deep (Req 1 \u203a 1.2 \u203a 1.2.1). PCI DSS v4.0.1 is the framework shown when the page opens. The bar reads: search, Manage Scope, Expand all / Collapse all, Filters. Add a control as a Parent Control or a Sub-Control \u2014 a sub-control picks its parent from a searchable list and takes its framework and category. Controls also carry testing guidance.",
+    "**PCI DSS v4.0.1 sub-controls.** Requirements 1\u201312, their 63 sections (1.1, 1.2\u2026) and 250 sub-controls, added automatically where PCI DSS is set up, each with a summary and testing guidance.",
+    "**Search as you type** on every list with a search box: rows filter while you type, forgiving typos and missing letters (\"netwrk diagrm\" finds \"network diagram\"); \u00d7 clears it; Enter still searches everything. On Controls a match shows with the controls above it.",
+    "**Pages use the full width of the screen** instead of a centred column.",
+    "**Manage Scope** (administrators). Switch sub-controls in or out of scope \u2014 with a required justification \u2014 or apply a preset: SAQ A, SAQ C, SAQ D, or full scope. Out-of-scope controls are hidden from everyone but administrators and never count towards readiness. After a change, **Save as preset** names the scope as it stands and adds it to the preset list, to apply again later.",
+    "**Assign to Framework** in the Controls bulk menu (administrators): move the ticked controls, each with its sub-controls, to another framework.",
+    "**EasyComply (Beta)** under Overview: audit readiness as a guided course. An administrator sets up a track in four steps (framework, scope, audit date and lead, launch) and the team is emailed. Each in-scope control becomes a task in four steps \u2014 guidance, policy mapping, risk check, evidence with an expiry date \u2014 that saves as you go. Completed tasks raise the readiness bar (also on the dashboard); an editor's completion waits for a manager's review; managers can re-open. Auditors get an inspection view with one-click evidence, Accept Evidence / Request Clarification, and Q&A per control. A track follows later scope changes: a control brought into scope gets its task, one taken out stops counting (its work is kept).",
+    "**EasyComply audit cycle.** At 100% a manager clicks **Submit for Audit Review**; the track is read-only while auditors review it. Auditors mark each control **Approve**, **Needs Clarification** or **Reject** (with remarks, and for a rejection what must be replaced), watching **Audit Completion** climb. With findings, **Submit with Findings** returns the track: those controls re-open with the remarks, the team answers and replaces what was rejected, and resubmits. With none, **Mark as Complete, Issue a Certificate** opens the certificate form \u2014 live preview, a drawn signature \u2014 and closes the track. Every step is kept in an audit log.",
+    "**Audit Review History** tab: every track with its status, dates, framework and auditor; completed ones open read-only and their certificates download.",
+    "**Certificates.** Certification \u203a Templates designs certificates in the app with a live preview: a formatting toolbar for the body (font, size, bold, italic, underline, colour, alignment, lists, indent, quote, strikethrough, clear formatting), variables such as {{company}} and {{framework_name}}, colour, frame and logo. The PDF carries the same formatting. Save stays off until something changes, and leaving with unsaved changes asks whether to save them. Certification \u203a Records lists every certificate.",
+    "**Certificates are emailed.** Issuing one sends a congratulatory email with the PDF attached \u2014 To, Cc and Bcc chosen on the form as on a NICAR, the team by default, and both distribution lists always in Cc.",
+    "**Internal Audit Team distribution list** beside the GRC Team one (Email delivery). Tracks submitted for audit review go to the auditors and this list; certificates are copied to both.",
+    "**Company name and address** in Branding, above the product name. {{company}} on a certificate is the company name.",
+    "**Auditors get their own sidebar**: Dashboard (led by the audit), Audit \u203a Audit Review / Audit History, Certification \u203a Records / Templates, and a read-only Library (Policies, Controls, Risk Register).",
+    "**One track per framework, stated plainly.** Choosing a framework already in progress in the setup wizard says so and offers the existing track.",
+    "With two or more tracks open, everyone but an administrator starts EasyComply by choosing the framework to work on.",
+    "The profile card says **Account Created**, not Date Joined.",
+    "**Security alerts** name the MITRE ATT&CK technique in the subject (Privilege Escalation, Account Access Removal, Account Manipulation) and read SECURITY ALERT, not \"Rejected\"."
   ],
   "actions": [
-    "**Each person now belongs to exactly one group.** Anyone who was in more than one keeps a single group \u2014 a team group matching their profile if there is one, otherwise their profile's own group \u2014 and each change is written to the log. Someone removed from their group has no access until they are added to another.",
-    "**System Purge has been removed.** A one-screen wipe of the platform is the first thing a stolen administrator session looks for. Any purge request on record is written to the application log before its table is dropped.",
-    "**Open NICARs that have gone unanswered will be chased on the first day after upgrading.** The follow-ups were described on every ticket but never sent, so an old ticket is due its first follow-up at once. Before upgrading, close in **NICAR Queue** any open ticket that was settled outside the platform, or record the reply date on it, and it will be left alone."
+    "**Readiness percentages change.** They now count in-scope controls with no sub-controls of their own, not the headings above them \u2014 so PCI DSS is measured across its 250 sub-controls instead of its 12 requirements.",
+    "**Security alerts go to the GRC distribution list only** \u2014 access changes, record status changes and sign-in settings changes. People involved still see them in their bell. Set Administration \u203a Email delivery \u203a GRC distribution list to the team's mailbox before upgrading.",
+    "**Every notification email now has one recipient.** Personal notices go to each person separately, plus one copy to the distribution list. Email subjects no longer start with the product name."
   ],
   "fixes": [
-    "**Actions that send email no longer make you wait for the mail server.** Notification emails are sent in the background; adding a note or approving a document returns at once.",
-    "**A record left open no longer keeps an idle session signed in.** The live updates do not count as activity for the idle sign-out.",
-    "**System settings shows the developers' logos** (777AppBuilders | ISNEK) in a neutral grey that reads on both themes; the developer's name is corrected to ISNEK.",
-    "**Form labels sit against their fields** (right-aligned), and read-only values such as Author line up with their label.",
-    "**The final follow-up's deadline is no longer in the past**, and the ticket page shows both the next follow-up and the Non-responsive closure date."
+    "**Approving a control no longer fails.** Approve on a control awaiting approval hit an error page: the form it posts back has no framework field once the record is read-only.",
+    "**\"Awaiting approval\" on the dashboard opens what is waiting.** It always opened the documents list, which was empty when the items waiting were controls or risks.",
+    "**Disabling or re-enabling a user asks why.** The reason is kept in History with who did it, and named in the security alert. A disabled account's other fields are read-only until it is re-enabled, and bulk disable / re-enable are recorded too.",
+    "**An access change now reaches the administrator who made it** as well as everyone else \u2014 their own bell keeps the record.",
+    "**Auditors no longer see a track before it is submitted.** Audit History and Audit Review offered View on tracks still being prepared, showing each control's progress.",
+    "**Addresses no longer leak between recipients.** One notification email used to list every administrator and the affected person together, visible to all of them."
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.13.0"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.14.0"
 }
