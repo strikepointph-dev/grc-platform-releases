@@ -20,6 +20,28 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.14.1 — 2026-09-23
+
+### New features
+- **A change of priority on a NICAR is announced.** Raising or lowering it moves both
+  clocks — the update target and the recipient follow-up ladder — so whoever the ticket
+  is assigned to is told, in their bell and by email, with the new intervals named.
+- **Notices Sent** uses the same filter panel as every other list ("By sent"), instead of
+  the old row of month links above it.
+- **The Review load chart is clickable**: each month opens the review cycles it counts.
+
+### Bugs & fixes
+- **An auditor's dashboard is the audit.** It showed the whole InfoSec workload —
+  approvals, review load, control coverage, the governance library. It now shows the
+  audit queue and where to find the read-only library.
+- **EasyComply readiness reads as a whole number** (100%, not 100.0%).
+
+### Upgrade note
+- **Restart every service, not only the web container.** The follow-up ladder, the SLA
+  sweep and the scheduled reports run in the health-recorder container; a deployment that
+  updates the application image but leaves that container on an older one will send no
+  follow-ups. `./update.sh` does this correctly.
+
 ## 2.14.0 — 2026-09-23
 
 ### New features
