@@ -20,6 +20,22 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.15.1 — 2026-09-24
+
+### Bugs & fixes
+- **Review reminders arrive on the right day.** The daily 07:00 check read the date in UTC,
+  which in Manila is still the day before until 08:00 — so every reminder came a day late,
+  nothing was sent on the due date, and the morning after it the email said "due today".
+  A document's overdue-for-review badge had the same fault.
+- **A restart no longer costs a day of reminders.** Started after the 07:00 slot — an
+  upgrade, a reboot — the reminder job now runs straight away instead of waiting until the
+  next morning, and a 15-, 10- or 3-day notice missed that way is sent late rather than never.
+
+### Upgrade note
+- **Expect a few review reminders straight after upgrading.** Any review within 15 days of
+  its due date that has not had its latest reminder is sent it on the first run — which is
+  immediately if you upgrade after 07:00.
+
 ## 2.15.0 — 2026-09-24
 
 ### New features
