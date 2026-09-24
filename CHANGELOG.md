@@ -20,6 +20,23 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.15.0 — 2026-09-24
+
+### New features
+- **A new sign-in page.** Two panels: a slideshow of the product on the left that moves on
+  every three seconds — the dots beneath it jump to a slide — and the sign-in card on the
+  right, logo centred. The backdrop follows the light and dark themes.
+- **The auditor's dashboard shows the work, not only the counts.** Four cards — For Review,
+  With Findings, Being Prepared, Certificates Issued — above the audit queue itself and a
+  feed of the latest activity on every readiness track.
+- **The main dashboard's five cards sit on one line**, each with an icon behind its count,
+  and read: NICAR SLA breached, Pending Approvals, Reviews Overdue, Residual Risks
+  (Critical/High), Controls with no evidence.
+
+### Bugs & fixes
+- **"Return to site" is gone from the sign-in page.** On this platform the site is the
+  sign-in page, so the link led straight back to where you were.
+
 ## 2.14.1 — 2026-09-23
 
 ### New features

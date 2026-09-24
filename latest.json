@@ -1,17 +1,14 @@
 {
-  "version": "2.14.1",
-  "released_at": "2026-09-23",
+  "version": "2.15.0",
+  "released_at": "2026-09-24",
   "features": [
-    "**A change of priority on a NICAR is announced.** Raising or lowering it moves both clocks \u2014 the update target and the recipient follow-up ladder \u2014 so whoever the ticket is assigned to is told, in their bell and by email, with the new intervals named.",
-    "**Notices Sent** uses the same filter panel as every other list (\"By sent\"), instead of the old row of month links above it.",
-    "**The Review load chart is clickable**: each month opens the review cycles it counts."
+    "**A new sign-in page.** Two panels: a slideshow of the product on the left that moves on every three seconds \u2014 the dots beneath it jump to a slide \u2014 and the sign-in card on the right, logo centred. The backdrop follows the light and dark themes.",
+    "**The auditor's dashboard shows the work, not only the counts.** Four cards \u2014 For Review, With Findings, Being Prepared, Certificates Issued \u2014 above the audit queue itself and a feed of the latest activity on every readiness track.",
+    "**The main dashboard's five cards sit on one line**, each with an icon behind its count, and read: NICAR SLA breached, Pending Approvals, Reviews Overdue, Residual Risks (Critical/High), Controls with no evidence."
   ],
-  "actions": [
-    "**Restart every service, not only the web container.** The follow-up ladder, the SLA sweep and the scheduled reports run in the health-recorder container; a deployment that updates the application image but leaves that container on an older one will send no follow-ups. `./update.sh` does this correctly."
-  ],
+  "actions": [],
   "fixes": [
-    "**An auditor's dashboard is the audit.** It showed the whole InfoSec workload \u2014 approvals, review load, control coverage, the governance library. It now shows the audit queue and where to find the read-only library.",
-    "**EasyComply readiness reads as a whole number** (100%, not 100.0%)."
+    "**\"Return to site\" is gone from the sign-in page.** On this platform the site is the sign-in page, so the link led straight back to where you were."
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.14.1"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.15.0"
 }
