@@ -20,6 +20,57 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.16.0 — 2026-09-25
+
+### New features
+- **Departments.** Every person can be placed in a department, and every page opens on
+  their own department's work — the dashboard, documents, review trackers and reports —
+  with "All departments" one click away. A department's people can open and edit their own
+  documents but not another team's. Departments ticked as "GRC team" (Information Security
+  & Cybersecurity, Risk & Compliance) see and work across the whole organisation.
+- **Recipients answer a NICAR on a page of its own.** The notice email carries a "View and
+  respond" button; after signing in, the recipient sees the finding, their deadline, the
+  conversation so far, and a box to reply with evidence attached. Nobody else can open it,
+  and every time someone opens a ticket it is recorded.
+- **An SLA clock for each side, like ServiceNow's.** A NICAR is always waiting on either the
+  recipient or the GRC team, and only that side's clock runs. The SLA tab shows a progress
+  ring and one row per turn — who, when, time taken, % of the SLA used, breached or not.
+  Only a reply the other side can see stops a clock; an internal work note does not.
+- **Reply to the recipient, or record a reply that came by email,** from the ticket. An
+  emailed reply is filed at the time it actually arrived, so the delay in filing it is not
+  charged to the recipient.
+- **Changing a NICAR's priority moves its deadline.** Raising a P3 to P1 re-measures the
+  running clock from its start at the new priority — it can go overdue on the spot, which is
+  the honest answer — and the log trail says where the deadline moved to.
+- **A recipient who has ignored the chases shows as overdue.** The SLA tab reads "Overdue
+  since … · 3 follow-ups unanswered", and the queue, the dashboard card and the SLA filter
+  count it, even while the latest follow-up window still has time on it.
+- **Escalations are on the record.** Adding a manager to a NICAR's To or Cc — or removing
+  or moving someone — appears in the log trail with who did it and when. The people added
+  receive every notice from then on, and the running clock names them.
+- **A third slide on the sign-in page.**
+
+### Bugs & fixes
+- **Pages open in about a third of the time.** Every page was working out the sidebar, the
+  header and the sign-in settings several times over before showing anything; most pages
+  now answer in under 100 ms on the server.
+- **NICARs issued before this release have their full SLA history.** The follow-up windows
+  they had already missed — and any priority change along the way — are rebuilt from the
+  notices that were sent.
+- **Opening the History of a document or NICAR you may not see now says it does not exist,**
+  instead of showing its change log.
+
+### Upgrade note
+- **The first start after upgrading takes a little longer** while the database is updated
+  and existing NICARs' SLA history is rebuilt. Nothing needs to be done by hand.
+- **Set the Site address** (Administration → Site address) if you have not: without it the
+  notice emails cannot carry the "View and respond" button and fall back to the old wording.
+- **New SSO accounts now start with no access** unless a group mapping gives them a profile.
+  An existing `.env` that sets `DJANGO_SSO_DEFAULT_ROLE=viewer` keeps the old behaviour;
+  change it to `none` to adopt the new default. Existing accounts are not changed.
+- **Nobody's access changes until you place them in a department** (Administration →
+  Users, "Set department"). People without one keep exactly the access they have today.
+
 ## 2.15.1 — 2026-09-24
 
 ### Bugs & fixes
