@@ -20,6 +20,21 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.16.1 — 2026-10-24
+
+### Bugs & fixes
+- **Security: Python updated to 3.12.15 (CVE-2026-82049).** The October Python release fixes a
+  flaw in how archives are unpacked: a crafted archive could use a hard link to a symbolic link
+  to reach a file outside the folder being unpacked into. The platform unpacks archives in one place —
+  restoring a backup — and already refused any archive containing a link before unpacking it, so
+  it was not exposed; the update removes the underlying flaw as well. New tests prove both layers.
+- **Not affected: PHP2Shell (CVE-2026-109618, CVE-2026-109619) and "Node2Shell".** The platform
+  contains no PHP and no Node.js — not in the application, its images, or its web server.
+
+### Upgrade note
+- **Pull the new image; nothing else changes.** No database changes and no configuration files
+  to replace: `./update.sh v2.16.1`.
+
 ## 2.16.0 — 2026-09-25
 
 ### New features
