@@ -20,6 +20,44 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.17.0 — 2026-10-27
+
+### New features
+- **Error tracking, with bug reports emailed to support.** Every server error, failed background
+  job, script error in someone's browser and failing health check becomes an Issue under
+  Administration → Error tracking — grouped, so a bug hit a thousand times is one Issue — and the
+  team is told when it is new, comes back, or spreads. Alerts can go by email, Telegram, Viber, a
+  signed webhook, or a ticket in Jira, ServiceNow, Zendesk and other help desks.
+- **Bug emails in the support format:** the subject names the company, the environment and the problem
+  (`[Company A · Production] …`), followed by Description, What, When, Where, Who, the raw log (with addresses,
+  tokens and long numbers masked), a recommended fix, and whether downtime is needed.
+- **A "Vendor support" alert channel to support@isnek.com is set up on upgrade.** It is visible and
+  can be switched off under Error tracking → Alert channels.
+- **Menu links that refuse their own user are now reported.** If someone's menu offers a page and
+  the page answers "403 Forbidden", that is an Issue — the kind of bug that crashes nothing and so
+  was previously only found when someone complained.
+
+### Bugs & fixes
+- **GRC Administrators signed in through SSO can open Users and Groups.** Both pages answered 403
+  because the Administrator profile lacked the permissions those pages check. Administrators can now
+  view, add and change accounts and groups. A break-glass superuser account can be seen but not
+  changed by anyone who is not a superuser, so it cannot be taken over.
+- **Every access profile is now checked against its table automatically:** a test signs in as each
+  of the six profiles and confirms each row of Administration → Access profiles against the real
+  pages, and opens every menu link each profile is shown.
+- **Pages load their stylesheets and scripts faster:** static files are compressed and cached for an
+  hour.
+
+### Upgrade note
+- **Error reports are emailed to support@isnek.com by default.** If they must not leave your
+  network, add `DJANGO_SUPPORT_ALERT_EMAIL=` (empty) to `.env` **before** running the update;
+  afterwards, switch the "Vendor support" channel off under Error tracking → Alert channels.
+- **Alerts need working email delivery** (Administration → Email delivery) and the **Site address**,
+  for the "Open the issue" button. Set the **Company name** under Branding and the environment
+  (Production / Staging) under System settings, so the subject says whose server sent it.
+- `./update.sh v2.17.0` applies everything, including the refreshed nginx configuration. No downtime
+  beyond the usual restart.
+
 ## 2.16.1 — 2026-10-24
 
 ### Bugs & fixes

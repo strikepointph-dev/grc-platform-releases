@@ -1,13 +1,21 @@
 {
-  "version": "2.16.1",
-  "released_at": "2026-10-24",
-  "features": [],
+  "version": "2.17.0",
+  "released_at": "2026-10-27",
+  "features": [
+    "**Error tracking, with bug reports emailed to support.** Every server error, failed background job, script error in someone's browser and failing health check becomes an Issue under Administration \u2192 Error tracking \u2014 grouped, so a bug hit a thousand times is one Issue \u2014 and the team is told when it is new, comes back, or spreads. Alerts can go by email, Telegram, Viber, a signed webhook, or a ticket in Jira, ServiceNow, Zendesk and other help desks.",
+    "**Bug emails in the support format:** the subject names the company, the environment and the problem (`[Company A \u00b7 Production] \u2026`), followed by Description, What, When, Where, Who, the raw log (with addresses, tokens and long numbers masked), a recommended fix, and whether downtime is needed.",
+    "**A \"Vendor support\" alert channel to support@isnek.com is set up on upgrade.** It is visible and can be switched off under Error tracking \u2192 Alert channels.",
+    "**Menu links that refuse their own user are now reported.** If someone's menu offers a page and the page answers \"403 Forbidden\", that is an Issue \u2014 the kind of bug that crashes nothing and so was previously only found when someone complained."
+  ],
   "actions": [
-    "**Pull the new image; nothing else changes.** No database changes and no configuration files to replace: `./update.sh v2.16.1`."
+    "**Error reports are emailed to support@isnek.com by default.** If they must not leave your network, add `DJANGO_SUPPORT_ALERT_EMAIL=` (empty) to `.env` **before** running the update; afterwards, switch the \"Vendor support\" channel off under Error tracking \u2192 Alert channels.",
+    "**Alerts need working email delivery** (Administration \u2192 Email delivery) and the **Site address**, for the \"Open the issue\" button. Set the **Company name** under Branding and the environment (Production / Staging) under System settings, so the subject says whose server sent it.",
+    "`./update.sh v2.17.0` applies everything, including the refreshed nginx configuration. No downtime beyond the usual restart."
   ],
   "fixes": [
-    "**Security: Python updated to 3.12.15 (CVE-2026-82049).** The October Python release fixes a flaw in how archives are unpacked: a crafted archive could use a hard link to a symbolic link to reach a file outside the folder being unpacked into. The platform unpacks archives in one place \u2014 restoring a backup \u2014 and already refused any archive containing a link before unpacking it, so it was not exposed; the update removes the underlying flaw as well. New tests prove both layers.",
-    "**Not affected: PHP2Shell (CVE-2026-109618, CVE-2026-109619) and \"Node2Shell\".** The platform contains no PHP and no Node.js \u2014 not in the application, its images, or its web server."
+    "**GRC Administrators signed in through SSO can open Users and Groups.** Both pages answered 403 because the Administrator profile lacked the permissions those pages check. Administrators can now view, add and change accounts and groups. A break-glass superuser account can be seen but not changed by anyone who is not a superuser, so it cannot be taken over.",
+    "**Every access profile is now checked against its table automatically:** a test signs in as each of the six profiles and confirms each row of Administration \u2192 Access profiles against the real pages, and opens every menu link each profile is shown.",
+    "**Pages load their stylesheets and scripts faster:** static files are compressed and cached for an hour."
   ],
-  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.16.1"
+  "url": "https://github.com/strikepointph-dev/grc-platform/releases/tag/v2.17.0"
 }
