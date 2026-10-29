@@ -20,6 +20,25 @@ patch: say what changes for them, not which function moved.
 
 ---
 
+## 2.17.1 — 2026-10-29
+
+### New features
+- **A new login page.** Your own artwork fills the left of the screen; the sign-in form sits on the
+  right with the legal notice under the heading, a yellow Sign in button, and "Sign in with
+  Microsoft" below it. On a phone the artwork becomes a banner across the top.
+- **Upload your own login artwork** under Branding settings → Login portal → Login artwork. It is
+  shown whole and centred on every screen shape, and the space around it is filled with the
+  picture's own edge colours so it blends in. Leave it empty to keep the built-in slideshow.
+- **"Forgot password?" now says who to ask** — your administrator, who can send a reset link —
+  and "Need access?" points to the support address set under Branding.
+
+### Bugs & fixes
+- The password field has a show/hide button.
+
+### Upgrade note
+- `./update.sh v2.17.1` applies everything, including one small database change. No downtime
+  beyond the usual restart. Upload the login artwork afterwards under Branding settings.
+
 ## 2.17.0 — 2026-10-27
 
 ### New features
